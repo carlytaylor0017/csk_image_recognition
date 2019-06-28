@@ -3,10 +3,8 @@
 
 ### Table of Contents
 1. [Introduction](#Introduction)
-    1. [Convolutional Neural Networks (CNNs)](#CNN) 
-    2. [TensorFlow and Keras](#tf) 
-    2. [Small-Data Problem](#small-data) 
-    3. [Image Augmentation](#augmentation)
+    1. [Convolutional Neural Networks (CNNs) using TensorFlow](#CNN) 
+    2. [Small-data problem and image augmentation using Keras](#small-data) 
 2. [Question](#Question)
 3. [Model](#model)
     1. [Hyperparameters](#hp)
@@ -16,14 +14,9 @@
 
 ## Introduction <a name="Introduction"></a>
 
-### Convolutional Neural Networks <a name="CNN"></a>
+### Convolutional Neural Networks (CNNs) using TensorFlow <a name="CNN"></a>
 
-### TensorFlow and Keras <a name="tf"></a>
-
-### Small-Data Problem <a name="small-data"></a>
-
-### Image Augmentation <a name="augmentation"></a>
-
+### Small-data problem and image augmentation using Keras <a name="small-data"></a>
 
 **Table 1**: 
 
