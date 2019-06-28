@@ -1,0 +1,1 @@
+# csk_image_recognition
