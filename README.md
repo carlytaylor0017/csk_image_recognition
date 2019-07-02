@@ -17,6 +17,14 @@ The skeletal formula of a chemical species is a type of molecular structural for
 
 Each structure conveys unique information about elements and bonding orientation in a chemical species. Since the structures are unique, this means that there is only one correct way to represent every chemical species. This presents an interesting problem when trying to train a neural network to predict the name of a structure - by convention the datasets are going to be sparse. The [hydrocarbon dataset](https://github.com/cwolfbrandt/csk_database/edit/master/README.md) has 2,135 rows, each with a unique name and 300 x 300 pixel structural image.
 
+**Table 1**: Sample rows from hydrocarbon dataset
+
+| Common Name      | IUPAC Name |Molecular Formula | Skeletal Formula | 
+| :-----------: | :-----------:| :-----------: | :----------:| 
+| coronene      |  coronene | C<sub>24</sub>H<sub>12</sub> | ![](images/model_images/494155/494155.png) |
+| biphenylene  | biphenylene | C<sub>12</sub>H<sub>8</sub> |![](images/model_images/497397/497397.png)|
+|1-Phenylpropene | [(E)-prop-1-enyl]benzene | C<sub>9</sub>H<sub>10</sub>| ![](images/model_images/478708/478708.png)  |
+
 ### Small-data problem and image augmentation using Keras <a name="small-data"></a>
 
 There has been a recent explosion in research of modeling methods geared towards "big-data." Certainly, data science as a discipline has an obsession with big-data, as specialty methods are required to effectively analyze large datasets. However, an often overlooked problem in data science is small-data. It is generally (and perhaps incorrectly) believed that deep-learning is only applicable to big-data. 
@@ -25,14 +33,11 @@ It is true that deep-learning does usually require large amounts of training dat
 
 In order to make the most of the small dataset, more images must be generated. In Keras this can be done via the `keras.preprocessing.image.ImageDataGenerator` class. This method is used to augment each image, generating a a new image that has been randomly transformed. This ensures that the model should never see the exact same picture twice, which helps prevent overfitting and helps the model generalize better.
 
-**Table 1**: 
-
-| Common Name      | IUPAC Name |Molecular Formula | Skeletal Formula | 
+| Structural Image      | Augmented Image Example 1 | Augmented Image Example 2 | Augmented Image Example 3 |
 | :-----------: | :-----------:| :-----------: | :----------:| 
-| coronene      |  coronene | C<sub>24</sub>H<sub>12</sub> | ![](images/model_images/494155/494155.png) |
-| biphenylene  | biphenylene | C<sub>12</sub>H<sub>8</sub> |![](images/model_images/497397/497397.png)|
-|1-Phenylpropene | [(E)-prop-1-enyl]benzene | C<sub>9</sub>H<sub>10</sub>| ![](images/model_images/478708/478708.png)  |
-
+| ![](images/model_images/494155/494155.png)| ![](images/model_images/494155/_0_22.png) | ![](images/model_images/494155/_0_7483.png) |   ![](images/model_images/494155/_0_872.png) |
+| ![](images/model_images/497397/497397.png)| ![](images/model_images/497397/_0_5840.png) | ![](images/model_images/497397/_0_7180.png) |   ![](images/model_images/497397/_0_998.png) |
+| ![](images/model_images/478708/478708.png)| ![](images/model_images/478708/_0_6635.png) | ![](images/model_images/478708/_0_6801.png) |   ![](images/model_images/478708/_0_980.png) |
 ## Question <a name="Question"></a>
 
 Can I build a model that can correctly classify organic chemistry molecules given that my current dataset has only one image per target?
