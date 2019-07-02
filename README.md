@@ -168,10 +168,10 @@ In order to create a model with appropriately tuned hyperparameters, I started t
 
 | Structural Image      | Augmented Image Example 1 | Augmented Image Example 2 |
 | :-----------: | :-----------:| :-----------: | 
-| ![](images/model_images/flip_images/492379/492379.png)| ![](![](images/model_images/flip_images/492379/_0_9179.png) | ![](images/model_images/flip_images/492379/_0_82.png) | 
-| ![](images/model_images/flip_images/504270/504270.png)| ![](![](images/model_images/flip_images/504270/_0_569.png) | ![](images/model_images/flip_images/504270/_0_8840.png) | 
-| ![](images/model_images/flip_images/516411/516411.png)| ![](![](images/model_images/flip_images/516411/_0_3425.png) | ![](images/model_images/flip_images/516411/_0_5024.png) | 
-| ![](images/model_images/flip_images/529978/529978.png)| ![](![](images/model_images/flip_images/529978/_0_6933.png) | ![](images/model_images/flip_images/529978/_0_7646.png) | 
+| ![](images/model_images/flip_images/492379/492379.png)| ![](images/model_images/flip_images/492379/_0_9179.png) | ![](images/model_images/flip_images/492379/_0_82.png) | 
+| ![](images/model_images/flip_images/504270/504270.png)| ![](images/model_images/flip_images/504270/_0_569.png) | ![](images/model_images/flip_images/504270/_0_8840.png) | 
+| ![](images/model_images/flip_images/516411/516411.png)| ![](images/model_images/flip_images/516411/_0_3425.png) | ![](images/model_images/flip_images/516411/_0_5024.png) | 
+| ![](images/model_images/flip_images/529978/529978.png)|![](images/model_images/flip_images/529978/_0_6933.png) | ![](images/model_images/flip_images/529978/_0_7646.png) | 
 
 ### Performance <a name="performance"></a>
 
