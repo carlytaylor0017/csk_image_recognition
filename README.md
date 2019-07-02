@@ -123,34 +123,27 @@ POOL layer will perform a downsampling operation along the spatial dimensions (w
 The code snippet below is the architecture for the model - a stack of 3 convolution layers with an `ELU` activation followed by max-pooling layers:
 
 ```python
-nb_filters = 32
-pool_size = (2, 2)
-kernel_size = (3, 3)
-
 model = Sequential()
-model.add(Conv2D(nb_filters, kernel_size, input_shape=input_shape))
-model.add(Activation(act))
-model.add(MaxPooling2D(pool_size=pool_size))
+model.add(Conv2D(32, (3, 3), input_shape=(50, 50, 3)))
+model.add(Activation('elu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(nb_filters, kernel_size))
-model.add(Activation(act))
-model.add(MaxPooling2D(pool_size=pool_size))
+model.add(Conv2D(32, (3, 3)))
+model.add(Activation('elu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(nb_filters + nb_filters, kernel_size))
-model.add(Activation(act))
-model.add(MaxPooling2D(pool_size=pool_size))
+model.add(Conv2D(64, (3, 3)))
+model.add(Activation('elu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 ```
 On top of this stack are two fully-connected layers. The model is finished with `softmax` activation, which is used in conjunction with `elu` and `categorical crossentropy` loss to train our model.
 
 ```python
-nb_filters = 32
-nb_train_samples = 1458
-
 model.add(Flatten())
-model.add(Dense(nb_filters + nb_filters))
+model.add(Dense(64))
 model.add(Activation('elu'))
 model.add(Dropout(0.1))
-model.add(Dense(nb_train_samples))
+model.add(Dense(1458))
 model.add(Activation('softmax'))
 
 model.compile(loss='categorical_crossentropy',
