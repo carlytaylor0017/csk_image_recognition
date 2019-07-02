@@ -122,6 +122,41 @@ POOL layer will perform a downsampling operation along the spatial dimensions (w
 ```
 The code snippet below is the architecture for the model - a simple stack of 3 convolution layers with an `ELU` activation followed by max-pooling layers. This is very similar to the architectures that Yann LeCun advocated in the 1990s for image classification (with the exception of `ReLU`).
 
+
+```python
+nb_filters = 32
+pool_size = (2, 2)
+kernel_size = (3, 3)
+
+model = Sequential()
+
+model.add(Conv2D(nb_filters, kernel_size, input_shape=input_shape))
+model.add(Activation(act))
+model.add(MaxPooling2D(pool_size=pool_size))
+
+model.add(Conv2D(nb_filters, kernel_size))
+model.add(Activation(act))
+model.add(MaxPooling2D(pool_size=pool_size))
+
+model.add(Conv2D(nb_filters + nb_filters, kernel_size))
+model.add(Activation(act))
+model.add(MaxPooling2D(pool_size=pool_size))
+```
+```python
+model.add(Flatten())
+model.add(Dense(nb_filters + nb_filters))
+model.add(Activation('elu'))
+model.add(Dropout(0.1))
+
+model.add(Dense(nb_train_samples))
+model.add(Activation('softmax'))
+model.compile(loss='categorical_crossentropy',
+              optimizer=opt,
+               metrics=['accuracy'])
+```
+
+On top of it we stick two fully-connected layers. We end the model with a single unit and a sigmoid activation, which is perfect for a binary classification. To go with it we will also use the binary_crossentropy loss to train our model.
+
 ### Training <a name="train"></a>
 
 In order to create a model with appropriately tuned hyperparameters, I started training on a small dataset; the initial training set had 3 classes, specifically chosen to have vastly different features. For each of the 3 classes, I used image augmentation to create 100 training images per class. Table 2 shows the initial 3 classes chosen for training and samples of the augmented images.
