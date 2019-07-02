@@ -3,7 +3,7 @@
 
 ### Table of Contents
 1. [Introduction](#Introduction)
-    1. [Small-data problem and image augmentation using Keras](#small-data) 
+    1. [Small-data Problem and Image Augmentation using Keras](#small-data) 
 2. [Question](#Question)
 3. [Model](#model)
     1. [Hyperparameters](#hp)
@@ -15,7 +15,7 @@
 
 The skeletal formula of a chemical species is a type of molecular structural formula that serves as a shorthand representation of a molecule's bonding and contains some information about its molecular geometry. It is represented in two dimensions, and is used as a shorthand representation for sketching species or reactions. This shorthand representation is particularly useful in that carbons and hydrogens, the two most common atoms in organic chemistry, don't need to be explicitly drawn.
 
-Each structure conveys unique information about elements and bonding orientation in a chemical species. Since the structures are unique, this means that there is only one correct way to represent every chemical species. This presents an interesting problem when trying to train a neural network to predict the name of a structure - by convention the datasets are going to be sparse. The [hydrocarbon dataset](https://github.com/cwolfbrandt/csk_database/edit/master/README.md) has 2,135 rows, each with a unique name and 300 x 300 pixel structural image.
+Each structure conveys unique information about elements and bonding orientation in a chemical species. Since the structures are unique, this means that there is only one correct way to represent every chemical species. This presents an interesting problem when trying to train a neural network to predict the name of a structure - by convention the datasets are going to be sparse. The [hydrocarbon dataset](https://github.com/cwolfbrandt/csk_database/edit/master/README.md) has 1,458 rows, each with a unique name and 300 x 300 pixel structural image.
 
 **Table 1**: Sample rows from hydrocarbon dataset
 
@@ -25,26 +25,57 @@ Each structure conveys unique information about elements and bonding orientation
 | biphenylene  | biphenylene | C<sub>12</sub>H<sub>8</sub> |![](images/model_images/497397/497397.png)|
 |1-Phenylpropene | [(E)-prop-1-enyl]benzene | C<sub>9</sub>H<sub>10</sub>| ![](images/model_images/478708/478708.png)  |
 
-### Small-data problem and image augmentation using Keras <a name="small-data"></a>
+### Small-data Problem and Image Augmentation using Keras <a name="small-data"></a>
 
-There has been a recent explosion in research of modeling methods geared towards "big-data." Certainly, data science as a discipline has an obsession with big-data, as specialty methods are required to effectively analyze large datasets. However, an often overlooked problem in data science is small-data. It is generally (and perhaps incorrectly) believed that deep-learning is only applicable to big-data. 
+There has been a recent explosion in research of modeling methods geared towards "big-data." Certainly, data science as a discipline has an obsession with big-data, as focus has shifted towards development of specialty methods to effectively analyze large datasets. However, an often overlooked problem in data science is small-data. It is generally (and perhaps incorrectly) believed that deep-learning is only applicable to big-data. 
 
-It is true that deep-learning does usually require large amounts of training data in order to learn high-dimensional features of input samples. However, convolutional neural networks are one of the best models available for image classification, even when they have very little data from which to learn.
+It is true that deep-learning does usually require large amounts of training data in order to learn high-dimensional features of input samples. However, convolutional neural networks are one of the best models available for image classification, even when they have very little data from which to learn. Even so, Keras documentation defines small-data as 1000 images per class. This presents a particular challenge for the hydrocarbon dataset, where there is 1 image per class. 
 
-In order to make the most of the small dataset, more images must be generated. In Keras this can be done via the `keras.preprocessing.image.ImageDataGenerator` class. This method is used to augment each image, generating a a new image that has been randomly transformed. This ensures that the model should never see the exact same picture twice, which helps prevent overfitting and helps the model generalize better.
+In order to make the most of the small dataset, more images must be generated. In Keras this can be done via the `keras.preprocessing.image.ImageDataGenerator` class. This method is used to augment each image, generating a a new image that has been randomly transformed. This ensures that the model should never see the same picture twice, which helps prevent overfitting and helps the model generalize better.
+
+**Table 2**: Sample augmented images using Keras
 
 | Structural Image      | Augmented Image Example 1 | Augmented Image Example 2 | Augmented Image Example 3 |
 | :-----------: | :-----------:| :-----------: | :----------:| 
 | ![](images/model_images/494155/494155.png)| ![](images/model_images/494155/_0_22.png) | ![](images/model_images/494155/_0_7483.png) |   ![](images/model_images/494155/_0_872.png) |
 | ![](images/model_images/497397/497397.png)| ![](images/model_images/497397/_0_5840.png) | ![](images/model_images/497397/_0_7180.png) |   ![](images/model_images/497397/_0_998.png) |
 | ![](images/model_images/478708/478708.png)| ![](images/model_images/478708/_0_6635.png) | ![](images/model_images/478708/_0_6801.png) |   ![](images/model_images/478708/_0_980.png) |
+
 ## Question <a name="Question"></a>
 
-Can I build a model that can correctly classify organic chemistry molecules given that my current dataset has only one image per target?
+Can I build a model that can correctly classify organic chemistry molecules given that my current dataset has only one image per class?
 
 ## Model <a name="model"></a>
 
-### Hyperparameters  <a name="hp"></a>
+### Image Augmentation Parameters  <a name="aug"></a>
+
+```
+featurewise_std_normalization = True,
+featurewise_center = True,
+rotation_range=10,
+width_shift_range=0.1,
+height_shift_range=0.1,
+shear_range=0.1,
+zoom_range=0.1,
+rescale=1. / 255,
+horizontal_flip=False,
+fill_mode='nearest'
+```
+
+### Model Hyperparameters  <a name="hp"></a>
+Activation('softmax'))
+model.compile(loss='categorical_crossentropy',
+              optimizer=opt,
+act = 'elu'
+opt = Adam(lr=0.0001, decay=1e-6)
+
+lr: float >= 0. Learning rate.
+beta_1: float, 0 < beta < 1. Generally close to 1.
+beta_2: float, 0 < beta < 1. Generally close to 1.
+epsilon: float >= 0. Fuzz factor. If None, defaults to K.epsilon().
+decay: float >= 0. Learning rate decay over each update.
+amsgrad: boolean. Whether to apply the AMSGrad variant of this algorithm from the paper "On the Convergence of Adam and Beyond".
+
 
 ### Training <a name="train"></a>
 
