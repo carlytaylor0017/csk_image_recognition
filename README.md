@@ -33,7 +33,7 @@ There has been a recent explosion in research of modeling methods geared towards
 
 It is true that deep-learning does usually require large amounts of training data in order to learn high-dimensional features of input samples. However, convolutional neural networks are one of the best models available for image classification, even when they have very little data from which to learn. Even so, Keras documentation defines small-data as 1000 images per class. This presents a particular challenge for the hydrocarbon dataset, where there is 1 image per class. 
 
-In order to make the most of the small dataset, more images must be generated. In Keras this can be done via the `keras.preprocessing.image.ImageDataGenerator` class. This method is used to augment each image, generating a a new image that has been randomly transformed. This ensures that the model should never see the same picture twice, which helps prevent overfitting and helps the model generalize better.
+In order to make the most of the small dataset, more images must be generated. In Keras this can be done via the `keras.preprocessing.image.ImageDataGenerator` class. This method is used to augment each image, generating a new image that has been randomly transformed. This ensures that the model should never see the same picture twice, which helps prevent overfitting and helps the model generalize better.
 
 ## Question <a name="Question"></a>
 
@@ -99,7 +99,7 @@ activation function = ELU
 final activation function = softmax
 ```
 
-`categorical crossentropy` is a loss function that is used for single label categorization. This is when only one category is applicable for each data point. In other words, an example can belong to one class only.
+The `categorical crossentropy` loss function is used for single label categorization; in other words, an example can belong to one class only. The `categorical crossentropy` loss function compares the distribution of the predictions (the activations in the output layer, one for each class) with the true distribution, where the probability of the true class is set to 1 and 0 for the other classes.
 
 The `Adam` optimization algorithm is different to classical stochastic gradient descent, where the stochastic gradient descent maintains a single learning rate for all weight updates. `Adam` combines the advantages of both `Adagrad` and `RMSProp`, where it maintains a per-parameter learning rate that improves performance on problems with sparse gradients (e.g. natural language and computer vision problems), while also maintaining per-parameter learning rates that are adapted based on the average of recent magnitudes of the gradients for the weight (e.g. how quickly it is changing). Specifically, the `Adam` algorithm calculates an exponential moving average of the gradient and the squared gradient, and the parameters beta1 and beta2 control the decay rates of these moving averages.
 
@@ -120,8 +120,7 @@ CONV layer will compute the output of neurons that are connected to local region
 ACTIVATION layer will apply an elementwise activation function, leaving the volume unchanged.
 POOL layer will perform a downsampling operation along the spatial dimensions (width, height), resulting in a smaller volume.
 ```
-The code snippet below is the architecture for the model - a simple stack of 3 convolution layers with an `ELU` activation followed by max-pooling layers. This is very similar to the architectures that Yann LeCun advocated in the 1990s for image classification (with the exception of `ReLU`).
-
+The code snippet below is the architecture for the model - a stack of 3 convolution layers with an `ELU` activation followed by max-pooling layers:
 
 ```python
 nb_filters = 32
@@ -129,7 +128,6 @@ pool_size = (2, 2)
 kernel_size = (3, 3)
 
 model = Sequential()
-
 model.add(Conv2D(nb_filters, kernel_size, input_shape=input_shape))
 model.add(Activation(act))
 model.add(MaxPooling2D(pool_size=pool_size))
@@ -142,20 +140,24 @@ model.add(Conv2D(nb_filters + nb_filters, kernel_size))
 model.add(Activation(act))
 model.add(MaxPooling2D(pool_size=pool_size))
 ```
+On top of this stack are two fully-connected layers. The model is finished with `softmax` activation, which is used in conjunction with `elu` and `categorical crossentropy` loss to train our model.
+
 ```python
+nb_filters = 32
+nb_train_samples = 1458
+
 model.add(Flatten())
 model.add(Dense(nb_filters + nb_filters))
 model.add(Activation('elu'))
 model.add(Dropout(0.1))
-
 model.add(Dense(nb_train_samples))
 model.add(Activation('softmax'))
+
 model.compile(loss='categorical_crossentropy',
-              optimizer=opt,
+              optimizer=Adam(lr=0.0001, decay=1e-6),
                metrics=['accuracy'])
 ```
 
-On top of it we stick two fully-connected layers. We end the model with a single unit and a sigmoid activation, which is perfect for a binary classification. To go with it we will also use the binary_crossentropy loss to train our model.
 
 ### Training <a name="train"></a>
 
