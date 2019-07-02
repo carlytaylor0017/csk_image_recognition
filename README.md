@@ -64,13 +64,13 @@ fill_mode = points nearest the outside the boundaries of the input are filled by
 When creating the initial small dataset for model building, the following image augmentation parameters were used:
 
 ```
-rotation_range=40,
-width_shift_range=0.2,
-height_shift_range=0.2,
-rescale=1./255,
-shear_range=0.2,
-zoom_range=0.2,
-horizontal_flip=True,
+rotation_range=40
+width_shift_range=0.2
+height_shift_range=0.2
+rescale=1./255
+shear_range=0.2
+zoom_range=0.2
+horizontal_flip=True
 fill_mode='nearest'
 ```
 
