@@ -29,9 +29,9 @@ In order to make the most of the small dataset, more images must be generated. I
 
 | Common Name      | IUPAC Name |Molecular Formula | Skeletal Formula | 
 | :-----------: | :-----------:| :-----------: | :----------:| 
-| coronene      |  coronene | C<sub>24</sub>H<sub>12</sub> | ![](model_images/494155/494155.png) |
-| biphenylene  | biphenylene | C<sub>12</sub>H<sub>8</sub> |![](model_images/497397/497397.png)|
-|1-Phenylpropene | [(E)-prop-1-enyl]benzene | C<sub>9</sub>H<sub>10</sub>| ![](model_images/478708/478708.png)  |
+| coronene      |  coronene | C<sub>24</sub>H<sub>12</sub> | ![](images/model_images/494155/494155.png) |
+| biphenylene  | biphenylene | C<sub>12</sub>H<sub>8</sub> |![](images/model_images/497397/497397.png)|
+|1-Phenylpropene | [(E)-prop-1-enyl]benzene | C<sub>9</sub>H<sub>10</sub>| ![](images/model_images/478708/478708.png)  |
 
 ## Question <a name="Question"></a>
 
