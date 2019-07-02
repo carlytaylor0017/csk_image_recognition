@@ -29,14 +29,13 @@ In order to make the most of the small dataset, more images must be generated. I
 
 | Common Name      | IUPAC Name |Molecular Formula | Skeletal Formula | 
 | :-----------: | :-----------:| :-----------: | :----------:| 
-| ethanol      |  ethanol | CH<sub>3</sub>CH<sub>2</sub>OH | ![](images/ethanol.png) |
-| acetic acid   | ethanoic acid | CH<sub>3</sub>COOH  |![](images/acetic_acid.png)|
-|cyclohexane | cyclohexane | C<sub>6</sub>H<sub>12</sub>| ![](images/cyclohexane.png)  |
-| diphenylmethane | 1,1'-methylenedibenzene | (C<sub>6</sub>H<sub>5</sub>)<sub>2</sub>CH<sub>2</sub>|![](images/diphenylmethane.png)|
+| coronene      |  coronene | C<sub>24</sub>H<sub>12</sub> | ![](images/494155.png) |
+| biphenylene  | biphenylene | C<sub>12</sub>H<sub>8</sub> |![](images/497397.png)|
+|1-Phenylpropene | [(E)-prop-1-enyl]benzene | C<sub>9</sub>H<sub>10</sub>| ![](images/478708.png)  |
 
 ## Question <a name="Question"></a>
 
-Can I build a model that can correctly classify organic chemistry molecules given the limitations of my current dataset that there is only one image per target?
+Can I build a model that can correctly classify organic chemistry molecules given that my current dataset has only one image per target?
 
 ## Model <a name="model"></a>
 
