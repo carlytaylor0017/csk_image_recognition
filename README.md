@@ -113,7 +113,7 @@ The `softmax` function highlights the largest values and suppresses values which
 
 ### Model Architecture <a name="architecture"></a>
 
-Sample architecture of a simple CNN: 
+Sample layer of a simple CNN: 
 ```
 INPUT [50x50x3] will hold the raw pixel values of the image, in this case an image of width 50, height 50, and with three color channels R,G,B.
 CONV layer will compute the output of neurons that are connected to local regions in the input, each computing a dot product between their weights and a small region they are connected to in the input volume.
