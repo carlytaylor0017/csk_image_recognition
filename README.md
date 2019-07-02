@@ -107,7 +107,7 @@ The `ELU` activation function, or "exponential linear unit", avoids a vanishing 
 
 ![](images/model_images/elu_vs_relu.png)
 
-**Figure 1**: ELU vs. ReLU activation functions
+**Figure 1**: `ELU` vs. `ReLU` activation functions
 
 The `softmax` function highlights the largest values and suppresses values which are significantly below the maximum value, though this is not true for small values. It normalizes the outputs so that they sum to 1 so that they can be directly treated as probabilities over the output.
 
@@ -120,7 +120,7 @@ CONV layer will compute the output of neurons that are connected to local region
 ACTIVATION layer will apply an elementwise activation function, leaving the volume unchanged.
 POOL layer will perform a downsampling operation along the spatial dimensions (width, height), resulting in a smaller volume.
 ```
-The code snippet below is the architecture for the model - a simple stack of 3 convolution layers with an ELU activation followed by max-pooling layers. This is very similar to the architectures that Yann LeCun advocated in the 1990s for image classification (with the exception of ReLU).
+The code snippet below is the architecture for the model - a simple stack of 3 convolution layers with an `ELU` activation followed by max-pooling layers. This is very similar to the architectures that Yann LeCun advocated in the 1990s for image classification (with the exception of `ReLU`).
 
 ### Training <a name="train"></a>
 
