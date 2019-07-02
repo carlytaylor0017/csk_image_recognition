@@ -157,7 +157,7 @@ model.compile(loss='categorical_crossentropy',
 In order to create a model with appropriately tuned hyperparameters, I started training on a small dataset; the initial training set had 3 classes, specifically chosen to have vastly different features. For each of the 3 classes, I used image augmentation to create 100 training images per class. Table 2 shows the initial 3 classes chosen for training and samples of the augmented images.
 
 
-**Table 2**: Sample augmented images using Keras
+**Table 2**: Simple augmented images using Keras
 
 | Structural Image      | Augmented Image Example 1 | Augmented Image Example 2 | Augmented Image Example 3 |
 | :-----------: | :-----------:| :-----------: | :----------:| 
@@ -165,6 +165,13 @@ In order to create a model with appropriately tuned hyperparameters, I started t
 | ![](images/model_images/497397/497397.png)| ![](images/model_images/497397/_0_5840.png) | ![](images/model_images/497397/_0_7180.png) |   ![](images/model_images/497397/_0_998.png) |
 | ![](images/model_images/478708/478708.png)| ![](images/model_images/478708/_0_6635.png) | ![](images/model_images/478708/_0_6801.png) |   ![](images/model_images/478708/_0_980.png) |
 
+
+| Structural Image      | Augmented Image Example 1 | Augmented Image Example 2 |
+| :-----------: | :-----------:| :-----------: | 
+| ![](images/model_images/flip_images/492379/492379.png)| ![](![](images/model_images/flip_images/492379/_0_9179.png) | ![](images/model_images/flip_images/492379/_0_82.png) | 
+| ![](images/model_images/flip_images/504270/504270.png)| ![](![](images/model_images/flip_images/504270/_0_569.png) | ![](images/model_images/flip_images/504270/_0_8840.png) | 
+| ![](images/model_images/flip_images/516411/516411.png)| ![](![](images/model_images/flip_images/516411/_0_3425.png) | ![](images/model_images/flip_images/516411/_0_5024.png) | 
+| ![](images/model_images/flip_images/529978/529978.png)| ![](![](images/model_images/flip_images/529978/_0_6933.png) | ![](images/model_images/flip_images/529978/_0_7646.png) | 
 
 ### Performance <a name="performance"></a>
 
