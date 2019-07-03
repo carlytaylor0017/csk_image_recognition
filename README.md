@@ -6,7 +6,7 @@
     1. [Small-Data Problem and Image Augmentation using Keras](#small-data) 
 2. [Question](#Question)
 3. [Model](#model)
-    1. [Convolutional Neural Networks](#cnn) 
+    1. [Convolutional Neural Network](#cnn) 
     2. [Model Hyperparameters](#hp)
     3. [Image Augmentation Parameters](#aug)
     4. [Training and Performance](#train)
@@ -40,7 +40,7 @@ Can I build a model that can correctly classify organic chemistry molecules give
 
 ## Model <a name="model"></a>
 
-### Convolutional Neural Networks <a name="cnn"></a>
+### Convolutional Neural Network <a name="cnn"></a>
 
 CNNs take advantage of the fact that the input consists of images and they constrain the architecture in a more sensible way. In particular, unlike a regular Neural Network, the layers of a CNN have neurons arranged in 3 dimensions: width, height, depth.
 
@@ -55,17 +55,17 @@ activation function = ELU
 final activation function = softmax
 ```
 
-The `categorical crossentropy` loss function is used for single label categorization; in other words, an example can belong to one class only. The `categorical crossentropy` loss function compares the distribution of the predictions (the activations in the output layer, one for each class) with the true distribution, where the probability of the true class is set to 1 and 0 for the other classes.
+The `categorical crossentropy` loss function is used for single label categorization, where each image belongs to only one class. The `categorical crossentropy` loss function compares the distribution of the predictions (the activations in the output layer, one for each class) with the true distribution, where the probability of the true class is 1 and 0 for all other classes.
 
-The `Adam` optimization algorithm is different to classical stochastic gradient descent, where the stochastic gradient descent maintains a single learning rate for all weight updates. `Adam` combines the advantages of both `Adagrad` and `RMSProp`, where it maintains a per-parameter learning rate that improves performance on problems with sparse gradients (e.g. natural language and computer vision problems), while also maintaining per-parameter learning rates that are adapted based on the average of recent magnitudes of the gradients for the weight (e.g. how quickly it is changing). Specifically, the `Adam` algorithm calculates an exponential moving average of the gradient and the squared gradient, and the parameters beta1 and beta2 control the decay rates of these moving averages.
+The `Adam` optimization algorithm is different to classical stochastic gradient descent, where gradient descent maintains a single learning rate for all weight updates. Specifically, the `Adam` algorithm calculates an exponential moving average of the gradient and the squared gradient, and the parameters beta1 and beta2 control the decay rates of these moving averages.
 
-The `ELU` activation function, or "exponential linear unit", avoids a vanishing gradient similar to `ReLUs`, but `ELUs` have improved learning characteristics compared to the other activation functions. In contrast to `ReLUs`, `ELUs` have negative values which allows them to push mean unit activations closer to zero. Zero means speed up learning because they bring the gradient closer to the unit natural gradient. Like batch normalization, `ELUs` push the mean towards zero. A comparison between `ReLU` and `ELU` activation functions can be seen in **Figure 1**.
+The `ELU` activation function, or "exponential linear unit", avoids a vanishing gradient similar to `ReLUs`, but `ELUs` have improved learning characteristics compared to the other activation functions. In contrast to `ReLUs`, `ELUs` don't have a slope of 0 for negative values. This allows the `ELU` function to push mean unit activations closer to zero; zero means speed up learning because they bring the gradient closer to the unit natural gradient. A comparison between `ReLU` and `ELU` activation functions can be seen in **Figure 1**.
 
 ![](images/model_images/elu_vs_relu.png)
 
 **Figure 1**: `ELU` vs. `ReLU` activation functions
 
-The `softmax` function highlights the largest values and suppresses values which are significantly below the maximum value, though this is not true for small values. It normalizes the outputs so that they sum to 1 so that they can be directly treated as probabilities over the output.
+The `softmax` function highlights the largest values and suppresses values which are significantly below the maximum value. The function normalizes the distribution of the predictions, so that they can be directly treated as probabilities.
 
 ### Image Augmentation Parameters  <a name="aug"></a>
 
