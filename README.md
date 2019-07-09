@@ -5,12 +5,17 @@
 1. [Introduction](#Introduction)
     1. [Small-Data Problem and Image Augmentation using Keras](#small-data) 
 2. [Question](#Question)
-3. [Model](#model)
-    1. [Convolutional Neural Network](#cnn) 
-    2. [Model Hyperparameters](#hp)
-    3. [Image Augmentation Parameters](#aug)
+3. [Convolutional Neural Network Model](#cnn)
+    1. [Model Hyperparameters](#hp)
+    2. [Image Augmentation Parameters](#aug)
+    3. [Model Architecture](#architecture)
     4. [Training and Performance](#train)
-4. [Future Work](#future_work)
+4. [Generative Adversarial Network Model](#gan)
+    1. [Model Hyperparameters](#ganhp)
+    2. [Image Augmentation Parameters](#ganaug)
+    3. [Model Architecture](#ganarchitecture)
+    4. [Training and Performance](#gantrain)
+5. [Future Work](#future_work)
 
 ## Introduction <a name="Introduction"></a>
 
@@ -38,9 +43,7 @@ In order to make the most of the small dataset, more images must be generated. I
 
 Can I build a model that can correctly classify organic chemistry molecules given that my current dataset has only one image per class?
 
-## Model <a name="model"></a>
-
-### Convolutional Neural Network <a name="cnn"></a>
+## Convolutional Neural Network Model <a name="cnn"></a>
 
 CNNs take advantage of the fact that the input consists of images and they constrain the architecture in a more sensible way. In particular, unlike a regular Neural Network, the layers of a CNN have neurons arranged in 3 dimensions: width, height, depth.
 
@@ -197,6 +200,14 @@ The accuracy and loss for this model can be seen in **Figure 4** and **Figure 5*
 
 While it is far from perfect, this model can predict the correct class for any molecule with upwards of 80% accuracy. Given the limitations of the datase, this is well beyond the bounds of what was expected and is a pleasant surprise.
 
-## Future Work <a name="future_work"></a>
+## Generative Adversarial Network Model <a name="gan"></a>
 
-Classification of computer-generated images is useful, however there are instances where one would encounter hand-drawn images as well. I would like to include the ability to predict both hand-drawn and computer-generated images in my final product. It would be useful to be able to generate images that appeared to be hand-drawn in the same way that Keras is able to randomly transform images. Perhaps a generalized adversarial network (GAN) would be the right tool for this task , and would save me from having to manually create an entire dataset.
+### Model Hyperparameters  <a name="ganhp"></a>
+
+### Model Architecture <a name="ganarchitecture"></a>
+
+### Image Augmentation Parameters  <a name="ganaug"></a>
+
+### Training and Performance <a name="gantrain"></a>
+
+
