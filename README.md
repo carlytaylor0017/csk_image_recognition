@@ -6,13 +6,13 @@
     1. [Small-Data Problem and Image Augmentation using Keras](#small-data) 
 2. [Question](#Question)
 3. [Convolutional Neural Network Model](#cnn)
-    1. [Model Hyperparameters](#hp)
-    2. [Image Augmentation Parameters](#aug)
+    1. [Image Augmentation Parameters](#aug)
+    2. [Model Hyperparameters](#hp)
     3. [Model Architecture](#architecture)
     4. [Training and Performance](#train)
 4. [Generative Adversarial Network Model](#gan)
-    1. [Model Hyperparameters](#ganhp)
-    2. [Image Augmentation Parameters](#ganaug)
+    1. [Image Augmentation Parameters](#ganaug)
+    2. [Model Hyperparameters](#ganhp)
     3. [Model Architecture](#ganarchitecture)
     4. [Training and Performance](#gantrain)
 5. [Future Work](#future_work)
@@ -46,29 +46,6 @@ Can I build a model that can correctly classify organic chemistry molecules give
 ## Convolutional Neural Network Model <a name="cnn"></a>
 
 CNNs take advantage of the fact that the input consists of images and they constrain the architecture in a more sensible way. In particular, unlike a regular Neural Network, the layers of a CNN have neurons arranged in 3 dimensions: width, height, depth.
-
-### Model Hyperparameters  <a name="hp"></a>
-
-```
-model loss = categorical crossentropy
-model optimizer = Adam
-optimizer learning rate = 0.0001
-optimizer learning decay rate = 1e-6
-activation function = ELU
-final activation function = softmax
-```
-
-The `categorical crossentropy` loss function is used for single label categorization, where each image belongs to only one class. The `categorical crossentropy` loss function compares the distribution of the predictions (the activations in the output layer, one for each class) with the true distribution, where the probability of the true class is 1 and 0 for all other classes.
-
-The `Adam` optimization algorithm is different to classical stochastic gradient descent, where gradient descent maintains a single learning rate for all weight updates. Specifically, the `Adam` algorithm calculates an exponential moving average of the gradient and the squared gradient, and the parameters beta1 and beta2 control the decay rates of these moving averages.
-
-The `ELU` activation function, or "exponential linear unit", avoids a vanishing gradient similar to `ReLUs`, but `ELUs` have improved learning characteristics compared to the other activation functions. In contrast to `ReLUs`, `ELUs` don't have a slope of 0 for negative values. This allows the `ELU` function to push mean unit activations closer to zero; zero means speed up learning because they bring the gradient closer to the unit natural gradient. A comparison between `ReLU` and `ELU` activation functions can be seen in **Figure 1**.
-
-![](images/model_images/elu_vs_relu.png)
-
-**Figure 1**: `ELU` vs. `ReLU` activation functions
-
-The `softmax` function highlights the largest values and suppresses values which are significantly below the maximum value. The function normalizes the distribution of the predictions, so that they can be directly treated as probabilities.
 
 ### Image Augmentation Parameters  <a name="aug"></a>
 
@@ -114,6 +91,29 @@ rescale=1./255
 fill_mode='nearest'
 ```
 **Parameters 2**: The easier set of image augmentation parameters for training (notice the small rotation and shift ranges)
+
+### Model Hyperparameters  <a name="hp"></a>
+
+```
+model loss = categorical crossentropy
+model optimizer = Adam
+optimizer learning rate = 0.0001
+optimizer learning decay rate = 1e-6
+activation function = ELU
+final activation function = softmax
+```
+
+The `categorical crossentropy` loss function is used for single label categorization, where each image belongs to only one class. The `categorical crossentropy` loss function compares the distribution of the predictions (the activations in the output layer, one for each class) with the true distribution, where the probability of the true class is 1 and 0 for all other classes.
+
+The `Adam` optimization algorithm is different to classical stochastic gradient descent, where gradient descent maintains a single learning rate for all weight updates. Specifically, the `Adam` algorithm calculates an exponential moving average of the gradient and the squared gradient, and the parameters beta1 and beta2 control the decay rates of these moving averages.
+
+The `ELU` activation function, or "exponential linear unit", avoids a vanishing gradient similar to `ReLUs`, but `ELUs` have improved learning characteristics compared to the other activation functions. In contrast to `ReLUs`, `ELUs` don't have a slope of 0 for negative values. This allows the `ELU` function to push mean unit activations closer to zero; zero means speed up learning because they bring the gradient closer to the unit natural gradient. A comparison between `ReLU` and `ELU` activation functions can be seen in **Figure 1**.
+
+![](images/model_images/elu_vs_relu.png)
+
+**Figure 1**: `ELU` vs. `ReLU` activation functions
+
+The `softmax` function highlights the largest values and suppresses values which are significantly below the maximum value. The function normalizes the distribution of the predictions, so that they can be directly treated as probabilities.
 
 ### Model Architecture <a name="architecture"></a>
 
@@ -202,11 +202,11 @@ While it is far from perfect, this model can predict the correct class for any m
 
 ## Generative Adversarial Network Model <a name="gan"></a>
 
+### Image Augmentation Parameters  <a name="ganaug"></a>
+
 ### Model Hyperparameters  <a name="ganhp"></a>
 
 ### Model Architecture <a name="ganarchitecture"></a>
-
-### Image Augmentation Parameters  <a name="ganaug"></a>
 
 ### Training and Performance <a name="gantrain"></a>
 
