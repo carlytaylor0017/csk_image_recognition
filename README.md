@@ -2,9 +2,9 @@
 ## Carly Wolfbrandt
 
 ### Table of Contents
-1. [Introduction](#Introduction)
+1. [Question](#Question)
+2. [Introduction](#Introduction)
     1. [Small-Data Problem and Image Augmentation using Keras](#small-data) 
-2. [Question](#Question)
 3. [Convolutional Neural Network Model](#cnn)
     1. [Image Augmentation Parameters](#aug)
     2. [Model Hyperparameters](#hp)
@@ -15,7 +15,10 @@
     2. [Model Hyperparameters](#ganhp)
     3. [Model Architecture](#ganarchitecture)
     4. [Training and Performance](#gantrain)
-5. [Future Work](#future_work)
+
+## Question <a name="Question"></a>
+
+Can I build a model that can correctly classify organic chemistry molecules given that my current dataset has only one image per class?
 
 ## Introduction <a name="Introduction"></a>
 
@@ -38,10 +41,6 @@ There has been a recent explosion in research of modeling methods geared towards
 It is true that deep-learning does usually require large amounts of training data in order to learn high-dimensional features of input samples. However, convolutional neural networks are one of the best models available for image classification, even when they have very little data from which to learn. Even so, Keras documentation defines small-data as 1000 images per class. This presents a particular challenge for the hydrocarbon dataset, where there is 1 image per class. 
 
 In order to make the most of the small dataset, more images must be generated. In Keras this can be done via the `keras.preprocessing.image.ImageDataGenerator` class. This method is used to augment each image, generating a new image that has been randomly transformed. This ensures that the model should never see the same picture twice, which helps prevent overfitting and helps the model generalize better.
-
-## Question <a name="Question"></a>
-
-Can I build a model that can correctly classify organic chemistry molecules given that my current dataset has only one image per class?
 
 ## Convolutional Neural Network Model <a name="cnn"></a>
 
