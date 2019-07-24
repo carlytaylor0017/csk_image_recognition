@@ -196,16 +196,3 @@ The accuracy and loss for this model can be seen in **Figure 4** and **Figure 5*
 
 While it is far from perfect, this model can predict the correct class for any molecule with upwards of 80% accuracy. Given the limitations of the datase, this is well beyond the bounds of what was expected and is a pleasant surprise.
 
-## Generative Adversarial Network Model <a name="gan"></a>
-
-|    | Filename                                | Prediction_1      |   Percent_1 | Prediction_2          |   Percent_2 | Prediction_3                                |   Percent_3 |
-|---:|:----------------------------------------|:------------------|------------:|:----------------------|------------:|:--------------------------------------------|------------:|
-|  0 | COC%28CN%29CN/COC%28CN%29CN.png         | COC%28CN%29CN     |    0.999978 | CC%28C%29%28N%29C%23N | 1.95933e-05 | NCC%28CN%29CN                               | 1.41832e-06 |
-|  1 | COCCC%28%3DO%29CN/COCCC%28%3DO%29CN.png | COCCC%28%3DO%29CN |    0.898298 | CCCCC%28%3DO%29CN     | 0.0822022   | CCCCC%28%3DO%29CO                           | 0.0137854   |
-|  2 | COCOC%28C%29CO/COCOC%28C%29CO.png       | COCOC%28C%29CO    |    0.977381 | CCC%28C%29OCON        | 0.0214027   | CC%28CO%29OCCN                              | 0.000469096 |
-|  3 | CONCCN/CONCCN.png                       | CCNCCN            |    0.998515 | CONCCN                | 0.00090443  | CCN%28CCN%29OC                              | 0.000498081 |
-|  4 | N%23CN1CC1/N%23CN1CC1.png               | N%23CN1CC1        |    0.992604 | N%23CN1CCCC1          | 0.00659746  | CC%28C%29%28C%29c1ccc%28cc1%29C%23Cc1ccccc1 | 0.000278826 |
-|  5 | NCCOC%3DC/NCCOC%3DC.png                 | NCCOC%3DC         |    0.998045 | NCCCCN                | 0.00163426  | OCCOC%3DC                                   | 0.000138851 |
-|  6 | NOCCON/NOCCON.png                       | NOCCON            |    0.999767 | NNCCNN                | 0.000138586 | NCCCCN                                      | 3.70406e-05 |
-
-
